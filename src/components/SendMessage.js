@@ -1,4 +1,3 @@
-import { collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { auth, db } from "../lib/firebase";
 
@@ -15,10 +14,10 @@ export const SendMessage = () => {
       text: message,
       photoURL,
       uid,
-      createdAt: Timestamp.fromDate(new Date("December 10, 1815")),
+      createdAt: Timestamp.now()
     };
 
-    setDoc(doc(db, "messages", "one"), docData);
+    setDoc(doc(db, "messages", uid), docData);
   };
 
   return (
