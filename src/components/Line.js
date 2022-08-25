@@ -25,6 +25,7 @@ export const Line = () => {
             <div key={id}>
               <img src={photoURL} alt="" />
               <p>{text}</p>
+              <p>{uid}</p>
             </div>
           </div>
         ))}
