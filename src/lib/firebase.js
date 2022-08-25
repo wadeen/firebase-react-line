@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app"; // Firesbase init
-import { getFirestore, collection } from "firebase/firestore"; // Firestore
-import { getAuth, GoogleAuthProvider } from "firebase/auth"; // Auth
+import { initializeApp } from 'firebase/app' // Firesbase init
+import { getFirestore, collection } from 'firebase/firestore' // Firestore
+import { getAuth, GoogleAuthProvider } from 'firebase/auth' // Auth
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -9,12 +9,12 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-};
+}
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
-const db = getFirestore(app); // Firestore
-const auth = getAuth(app); // Auth
-const provider = new GoogleAuthProvider(); // Auth
+const db = getFirestore(app) // Firestore
+const auth = getAuth(app) // Auth
+const provider = new GoogleAuthProvider() // Auth
 
-export { db, auth, provider };
+export { db, auth, provider }
