@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { db } from '../lib/firebase'
+import React, { useEffect, useState, useRef } from 'react'
+import { auth, db } from '../lib/firebase'
 import { SignOut } from './SignOut'
 import { collection, onSnapshot } from 'firebase/firestore'
 import { SendMessage } from './SendMessage'
 
 export const Line = () => {
+  const scroll = useRef()
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
@@ -19,18 +20,23 @@ export const Line = () => {
   return (
     <div>
       <SignOut />
-      <div className="messages">
+      <div className="msgs">
         {messages.map(({ id, text, photoURL, uid }) => (
-          <div key={id}>
-            <div key={id}>
+          <div>
+            <div
+              key={id}
+              className={`msg ${
+                uid === auth.currentUser.uid ? 'sent' : 'received'
+              }`}
+            >
               <img src={photoURL} alt="" />
               <p>{text}</p>
-              <p>{uid}</p>
             </div>
           </div>
         ))}
       </div>
-      <SendMessage />
+      <SendMessage scroll={scroll} />
+      <div ref={scroll}></div>
     </div>
   )
 }
